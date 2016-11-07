@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--{include file="Common:header"/}-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/activity.min.css">
+</head>
+<body>
+
+<!--{include file="Common:header_nav"/}-->
+
+<section class="index-page">
+    <div id="myCarousel" class="banner-section carousel slide">
+        <ol class="carousel-indicators">
+            <!--{volist name="advert_arr" id="vo"}-->
+            <li data-target="#myCarousel" data-slide-to="{$key}" <!--{if condition="$key == 0"}-->class="active"<!--{/if}-->></li>
+            <!--{/volist}-->
+        </ol>
+        <div class="carousel-inner">
+            <!--{volist name="advert_arr" id="vo"}-->
+            <div class="item <!--{if condition="$key == 0"}-->active<!--{/if}-->">
+                <div class="slider-banner first-slide" style="background: url({$vo.icon});"></div>
+            </div>
+            <!--{/volist}-->
+        </div>
+    </div>
+    
+    <div class="about-section">
+        <p class="container"><span class="title">来福直播！</span>
+            <span>国内首家创业类活动直播平台</span>
+            <a href="">关于来福</a>
+        </p>
+    </div>
+    
+    <div class="hour-section">
+        <!--{if condition="$newly"}-->
+        <div class="container p-b-m">
+            <a href="{:U('activity/detail',array('id'=>$newly['id']))}" target="_blank" class="content clearfix">
+                <div data-toggle="timer" id="time-control" data-time="{$newly.date_time}" class="timer timer-lg">
+                    <span>距<i class="visible-xs">最近直播</i></span>
+                    <em class="data-day">0</em><span>天</span>
+                    <em><span class="data-hour">0</span>:<span class="data-minute">0</span>:<span class="data-second">0</span></em>
+                </div>
+                <div class="over">
+                    <div class="poster">
+                        <img src="{$newly.imgpath}" alt="{$newly.subject}">
+                    </div>
+                    <div class="title">
+                        <h4>{$newly.subject}</h4>
+                        <h5>
+                            {$newly.address} <!--{if condition="$newly['order_count']"}--><small class="text-muted">（{$newly.order_count}人已报名）</small><!--{/if}-->
+                        </h5>
+                    </div>
+                    <div class="more">
+                        <span>了解详情<i class="glyphicon glyphicon-chevron-right"></i></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!--{/if}-->
+    </div>
+    
+    <div id="cast" class="bannerWrap-section">
+        
+    </div>
+    
+    <div id="foreshow" class="card-container">
+        
+    </div>
+    
+    <div id="review" class="wonderful-section">
+        
+    </div>
+    
+    <div class="about-section"><p class="container"><a href="{:U('activity/index')}">更多活动</a></p></div>
+</section>
+
+<!--{include file="Common:footer" /}-->
+
+<!--{include file="Common:js" /}-->
+<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/time.js"></script>
+<script type="text/javascript">
+    //正在直播
+    function cast(issort){
+        $.ajax({
+            type: "POST",
+            dataType : 'html',
+            url: "{:U('activity/cast')}",
+            data: {"sort":issort},
+            success: function(data){
+                $("#cast").html(data);
+            }
+        });
+    }
+    cast(0);
+    
+    //正在直播
+    function foreshow(issort){
+        $.ajax({
+            type: "POST",
+            dataType : 'html',
+            url: "{:U('activity/foreshow')}",
+            data: {"sort":issort},
+            success: function(data){
+                $("#foreshow").html(data);
+            }
+        });
+    }
+    foreshow(0);
+    
+    //正在直播
+    function review(issort){
+        $.ajax({
+            type: "POST",
+            dataType : 'html',
+            url: "{:U('activity/review')}",
+            data: {"sort":issort},
+            success: function(data){
+                $("#review").html(data);
+            }
+        });
+    }
+    review(0);
+</script>
+</body>
+</html>

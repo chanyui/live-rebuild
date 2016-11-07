@@ -1,0 +1,69 @@
+<!--{if condition="$sort != 0 or $review"}-->
+<div class="block-title container">
+    <span>精彩回顾</span>
+    <a href="#back" data-toggle="collapse" <!--{if condition="$sort != 0"}-->class="wonderful-active"<!--{/if}-->>两创示范</a>
+    <a href="{:U('activity/index',array('slive'=>3))}"><i class="glyphicon glyphicon-circle-arrow-right glyright-more"><span>更多</span></i></a>
+</div>
+<div id="back" class="collapse container <!--{if condition="$sort != 0"}-->in<!--{/if}-->">
+    <p>
+        <a <!--{if condition="$sort == 1"}-->class="wonderful-active"<!--{/if}--> onclick="review(1);return false;" href="javascript:void(0);">直播</a>
+        <a <!--{if condition="$sort == 2"}-->class="wonderful-active"<!--{/if}--> onclick="review(2);return false;" href="javascript:void(0);">活动</a>
+    </p>
+</div>
+<div class="card-wonderful card container">
+    <div class="col-md-4">
+        <!--{if condition="$review[0]"}-->
+        <div class="card-container left">
+            <a href="{:U('activity/detail',array('id'=>$review[0]['id']))}">
+                <div style="background:url({$review[0]['imgpath']})" class="img-container">
+                    <!--{php}-->if($review[0]['isexample'] == 1){<!--{/php}--><span class="right-type">两创示范</span><!--{php}-->}<!--{/php}-->
+                    <span class="like-center">
+                        <i class="glyphicon glyphicon-eye-open first-icon">{$review[0]['clicknums']}</i>
+                        <i class="glyphicon glyphicon-heart">{$review[0]['praises']}</i>
+                    </span>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="title">{$review[0]['subject']}</div>
+                    </div>
+                    <div class="card-text">
+                        <div class="card-time">时间 {$review[0]['begindate']|date='Y/m/d',###} {$review[0]['begindate']|get_weekend=###} {$review[0]['begindate']|date='H:i',###}～{$review[0]['enddate']|date='H:i',###}</div>
+                        <div class="card-address">地点 {$review[0]['address']}</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!--{/if}-->
+    </div>
+    <div class="col-md-8 card-content">
+        <!--{volist name="review" id="vo" key="k"}-->
+        <!--{if condition="$k != 1"}-->
+        <div class="card-container <!--{if condition="$k == 2"}-->right<!--{/if}-->">
+            <a href="{:U('activity/detail',array('id'=>$vo['id']))}">
+                <div class="col-md-4">
+                    <div style="background:url({$vo.imgpath});" class="img-container">
+                        <!--{if condition="$vo['isexample'] == 1"}--><span class="right-type">两创示范</span><!--{/if}-->
+                        <span class="like-center">
+                            <i class="glyphicon glyphicon-eye-open first-icon">{$vo.clicknums}</i>
+                            <i class="glyphicon glyphicon-heart">{$vo.praises}</i>
+                        </span>
+                </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="title">{$vo.subject}</div>
+                        </div>
+                        <div class="card-text">
+                            <div class="card-time">时间 {$vo.begindate|date='Y/m/d',###} {$vo.begindate|get_weekend=###} {$vo.begindate|date='H:i',###}～{$vo.enddate|date='H:i',###}</div>
+                            <div class="card-address">地点 {$vo.address}</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!--{/if}-->
+        <!--{/volist}-->
+    </div>
+</div>
+<!--{/if}-->

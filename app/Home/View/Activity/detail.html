@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--{include file="Common:header" /}-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/activityDetail.min.css">
+</head>
+<body>
+
+<!--{include file="Common:header_nav" /}-->
+<section class="activity-detail">
+    <div class="container">
+        <p class="font-title-main">{$info.category.name} /<span class="font-title-content">{$info.subject}</span>
+        </p>
+
+        <div class="live-container row">
+            <div class="col-md-9 live">
+                <div style="background:url({$info.imgpath})" class="play-container">
+                    <span class="left-type playstatus">{$info.playStatus.value}</span>
+                    <!--{eq name="info.isexample" value="1"}-->
+                    <span class="right-type">两创示范</span>
+                    <!--{/eq}-->
+
+                    <div class="show">
+                        <!--{if condition="$info['iscast'] == 1 && ( $info['playStatus']['key'] == 2 || $info['playStatus']['key'] == 3 ) "}-->
+                        <iframe src="http://live.busionline.com/home/index/player/vid/{$info.id}"
+                                class="iframe"></iframe>
+                        <!--{else /}-->
+
+                        <div class="<!--{eq name='info.iscast' value='1'}-->overflow<!--{/eq}-->">
+                            <div class="control-center text-center"><p class="title-tip">距离直播开始还有</p>
+
+                                <div id="time-control" data-time="{$info.begindateMsec}"
+                                     class="text-center time-control"><span
+                                        class="time-num time-d">0</span>天<span class="time-num time-h">0</span>小时<span
+                                        class="time-num time-m">0</span>分<span class="time-num time-s">0</span>秒
+                                </div>
+                                <div class="btns-control" style="font-size: 0px;">
+                                    <!--{eq name="info.playStatus.key" value='1'}-->
+                                    <!--<span class="live-btn left-btn open-model" style="font-size: 14px;">关注</span>-->
+                            <span class="live-btn right-btn submitOrder"
+                                  style="font-size: 14px;border-right:1px solid #FEDC32;"> {$info.enroll}</span>
+                                    <!--{/eq}-->
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--{/if}-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" id="activityinfo" style="display: none">
+                <div class="for-padding" style="overflow-y:auto;">
+                    <div class="activity-home"><span class="glyphicon glyphicon-certificate"></span>
+
+                        <div class="content">主办方：{$info.orgnize}</div>
+                    </div>
+                    <div class="activity-home"><span class="glyphicon glyphicon-user"></span>
+
+                        <div class="content">已报名{$info.order_count}人</div>
+                    </div>
+                    <div class="activity-home"><span class="glyphicon glyphicon-time"></span>
+
+                        <div class="content">{$info['begindate']|date='Y/m/d',###} {$info['begindate']|get_weekend=###}
+                            {$info['begindate']|date='H:i',###}～{$info['enddate']|date='H:i',###}
+                        </div>
+                    </div>
+                    <div class="activity-home"><span class="glyphicon glyphicon-map-marker"></span>
+
+                        <div class="content">{$info.address}</div>
+                    </div>
+                    <div class="map-contianer"><p class="map-title">现场地图</p>
+
+                        <div id="allmap" class="map-content"></div>
+                        <a target="_blank"
+                           href="http://map.baidu.com/?latlng={$info.lat},{$info.lng}&title={$info.address}&autoOpen=true"
+                           class="map-btn">百度地图</a></div>
+                </div>
+            </div>
+
+            <div class="col-md-3" id="activityad" style="display: none">
+                <div class="for-padding">
+                    <!--{volist name="advertArr" id="vo"}-->
+                    <a href="{$vo.jumpurl}" class="play-item">
+                        <div style="background:url({$vo.imgpath})" class="item-img"></div>
+                        <p>{$vo.title}</p>
+                    </a>
+                    <!--{/volist}-->
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-control">
+            <nav class="nav-interactive">
+                <ul class="nav">
+                    <li id="activitycontent" class="active"><a style="cursor:pointer;">活动介绍</a></li>
+                    <li id="enter-list"><a style="cursor:pointer;">报名人列表</a></li>
+                    <li id="comments-container"><a style="cursor:pointer;">评论</a></li>
+                </ul>
+            </nav>
+            <div class="activitycontent">
+                {$info.content}
+                <div class="bottom-tip">
+                    <!--{eq name="info.isexample" value="1"}-->
+                    <h3 class="text-center">本活动受杭州市小微企业创业创新基地城市示范活动券支持</h3>
+                    <!--{/eq}-->
+                </div>
+            </div>
+
+
+            <!--报名列表-->
+            <div class="enter-list" style="display: none">
+
+
+            </div>
+
+
+            <!--评论-->
+            <div class="comments-container" style="display: none">
+                <!--{if condition="$user"}-->
+                <div class="comment">
+                    <div class="header-content">
+                        <img src="{$user.avatar}" class="header-avator">
+                        <span class="header-name">{$user.nickname}</span>
+                    </div>
+                    <textarea placeholder="您还可以输入200字哦" name="content" class="textarea"></textarea>
+
+                    <div class="commend-control">
+                        <a class="commend-btn submitComment" style="cursor: pointer">发表评论</a>
+
+                        <div class="checkbox-container">
+                            <input id="nick" name="anonymous" type="checkbox" value="1">
+                            <label for="nick">我要匿名评论</label>
+                        </div>
+                    </div>
+                    <!--{/if}-->
+                    <div class="commend-list">
+                    </div>
+                </div>
+            </div>
+
+
+            <p class="recommend-activity">活动推荐</p>
+
+            <div class="recommend-card row">
+
+                <!--{volist name="recomment" id="vo"}-->
+                <div class="card col-md-4">
+                    <div class="card-container">
+                        <a href="{:U('detail',array('id'=>$vo['id']))}" style="height:auto;">
+                            <div style="background:url({$vo.imgpath})" class="img-container">
+
+                                <span class="left-type">{$vo.playStatus.value}</span>
+                                <!--{eq name="vo.isexample" value="1"}-->
+                                <span class="right-type">两创示范</span>
+                                <!--{/eq}-->
+
+                    <span class="like-center">
+                        <i class="glyphicon glyphicon-eye-open first-icon">{$vo.clicknums}</i>
+                        <i class="glyphicon glyphicon-heart">{$vo.praises}</i>
+                    </span>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="card-header">
+                                    <div class="title">{$vo.subject}</div>
+
+
+                                    <!--{eq name="vo.playStatus.key" value='1'}-->
+                                    <a class="enter-btn">立即报名</a>
+                                    <!--{/eq}-->
+
+                                </div>
+                                <div class="card-text">
+                                    <div class="card-time">时间 {$vo.dateArea.dateYmd} {$vo.dateArea.weekend}
+                                        {$vo.dateArea.area}
+                                    </div>
+                                    <div class="card-address">{$vo.address}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!--{/volist}-->
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1">
+            <div class="modal-dialog  black-modal">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true" class="black-close">&times;</span>
+                        <span class="sr-only ">Close</span>
+                    </button>
+                    <div class="modal-body">
+                        <img src="__PUBLIC__/image/blackphone.jpg">
+                        <h5>您可以输入手机号码接受提醒哦~</h5>
+                        <input type="tel" name="tel" placeholder="请输入您的手机号" value="">
+                        <button id="submitFollow">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+<!--{include file="Common:footer" /}-->
+
+<!--{include file="Common:js" /}-->
+<script src="__PUBLIC__/js/detail.js"></script>
+
+<script>
+    var aid = "{$info['id']}";
+    $.ajax({
+        type: "GET",
+        dataType : 'html',
+        url: "{:U('ajax/getActivityOrderByActivityId')}",
+        data: {"aid":aid},
+        success: function(data){
+            $(".enter-list").html(data);
+
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        dataType : 'html',
+        url: "{:U('ajax/getCommentByActivityId')}",
+        data: {"aid":aid},
+        success: function(data){
+            $(".commend-list").html(data);
+
+        }
+    });
+
+    function toggleVideo(){
+        var iscast = "{$info.iscast}";
+        if(iscast == 1){
+            var html = "<iframe src='http://live.busionline.com/home/index/player/vid/{$info.id}' class='iframe'></iframe>";
+            $(".show").html(html);
+            $(".playstatus").html("{$info.playStatus.value}");
+        }
+    }
+    
+    var status = "{$info.playStatus.key}";
+    toggleInfoWithAd(status);
+    
+    $("#submitFollow").click(function(){
+        var url = "{:U('ajax/followActivity',array('aid'=>$info['id']))}";
+        var tel = $(this).parent().find('input[name="tel"]').val();
+        $.getJSON(url,{tel:tel},function(data){
+            layer.msg(data.data);
+            $('#myModal').modal('hide');
+        });
+        /*$('#myModal').on('hide.bs.modal', function () {
+            console.log(888)
+    
+        });*/
+    
+    });
+    
+    $(".submitComment").click(function(){
+        var anonymous = $(".comment").find('input[name="anonymous"]:checked').val();
+        var content = $(".comment").find('textarea[name="content"]').val();
+        var isanonymity = anonymous ? anonymous : 0;
+        var url = "{:U('ajax/comment',array('aid'=>$info['id']))}";
+    
+        $.getJSON(url,{content:content,isanonymity:isanonymity},function(data){
+            if(data.code == 0){
+                getComment("{$info['id']}",1);
+                layer.msg('评论成功');
+            }else{
+                layer.msg(data.data);
+            }
+        });
+    });
+    
+    $(".submitOrder").click(function(){
+        var islogin = "{$islogin}";
+        var aid = "{$info.id}";
+        if(islogin ==1){
+            var url = "{:U('ajax/addActivityOrders')}";
+            $.getJSON(url,{aid:aid},function(data){
+                if(data.code == 0 || data.code == 200 ){
+                    $(".submitOrder").html('已报名');
+                }
+                layer.msg(data.data);
+            })
+        }else{
+            window.location.href = "{:U('Member/login')}";
+        }
+    });
+
+</script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=01PA49qOWKHvwzvpAuXqGCd0"></script>
+<script>
+    var map = new BMap.Map("allmap");
+    var lat = "{$info.lat}";
+    var lng = "{$info.lng}";
+    var point = new BMap.Point(lng, lat);
+    map.centerAndZoom(point, 15);
+    map.disableDragging();
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);               // 将标注添加到地图中
+    marker.enableDragging();
+    map.enableScrollWheelZoom();
+    //marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+</script>
+
+</body>
+</html>

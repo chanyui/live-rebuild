@@ -1,0 +1,66 @@
+<!--{if condition="$sort != 0 or $castlist"}-->
+<div class="block-title container">
+    <span>正在直播</span>
+    <a href="#demo" data-toggle="collapse" <!--{if condition="$sort != 0"}-->class="bannerWrap-active"<!--{/if}-->>两创示范</a>
+    <a href="{:U('activity/index',array('slive'=>2))}"><i class="glyphicon glyphicon-circle-arrow-right glyright-more"><span>更多</span></i></a>
+</div>
+<div id="demo" class="collapse container <!--{if condition="$sort != 0"}-->in<!--{/if}-->">
+    <p>
+        <a <!--{if condition="$sort == 1"}-->class="bannerWrap-active"<!--{/if}--> onclick="cast(1);return false;" href="javascript:void(0);">直播</a>
+        <a <!--{if condition="$sort == 2"}-->class="bannerWrap-active"<!--{/if}--> onclick="cast(2);return false;" href="javascript:void(0);">活动</a>
+    </p>
+</div>
+<div id="myCar" class="carousel slide">
+    <div class="container bannerWrap-container">
+        <div class="carousel-inner">
+            <!--{volist name="castlist" id="vo" key="k"}-->
+            <div class="item <!--{if condition="$k == 1"}-->active<!--{/if}-->">
+                <div class="container">
+                    <div class="content">
+                        <div class="poster col-md-4">
+                            <img alt="{$vo.subject}" src="{$vo.imgpath}" draggable="false" class="bg">
+                            <!--{if condition="$vo['isexample'] == 1"}--><div class="meta"><span>两创示范</span></div><!--{/if}-->
+                            <div class="sign">
+                                <i class="glyphicon glyphicon-eye-open first-icon"><span>{$vo.clicknums}</span></i>
+                                <i class="glyphicon glyphicon-heart"><span>{$vo.praises}</span></i>
+                            </div>
+                        </div>
+                        <div class="desc col-md-6">
+                            <h4 class="title text-white">{$vo.subject}</h4>
+                            <hr>
+                            <dl class="hidden-xs hidden-sm">
+                                <dt>时间</dt>
+                                <dd>{$vo.begindate|date='Y/m/d',###} {$vo.begindate|get_weekend=###} {$vo.begindate|date='H:i',###}～{$vo.enddate|date='H:i',###}</dd>
+                            </dl>
+                            <dl>
+                                <dt>地点</dt>
+                                <dd>{$vo.address}</dd>
+                            </dl>
+                            <dl>
+                                <dt>分享</dt>
+                                <dd>
+                                    <div data-bd-bind="1477449644612" class="bdsharebuttonbox horizontal bdshare-button-style0-24">
+                                        <a data-cmd="qzone" href="#" title="分享到QQ空间" class="bds_qzone"></a>
+                                        <a data-cmd="tsina" href="#" title="分享到新浪微博" class="bds_tsina"></a>
+                                        <a data-cmd="tqq" href="#" title="分享到腾讯微博" class="bds_tqq"></a>
+                                        <a data-cmd="renren" href="#" title="分享到人人网" class="bds_renren"></a>
+                                        <a data-cmd="weixin" href="#" title="分享到微信" class="bds_weixin"></a>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl><a href="{:U('activity/detail',array('id'=>$vo['id']))}" title="进入直播" class="join">进入直播</a></dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--{/volist}-->
+        </div>
+        <a href="#myCar" data-slide="prev" class="carousel-control left">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+        </a>
+        <a href="#myCar" data-slide="next" class="carousel-control right">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    </div>
+</div>
+<!--{/if}-->

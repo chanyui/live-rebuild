@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--{include file="Common:header"/}-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/authentication.css">
+</head>
+<body>
+
+<!--{include file="Common:header_nav"/}-->
+
+<section class="authentication-page">
+    <div class="container">
+        <div class="authentication">
+            <p class="auth-head">
+                <span class="middle">1.核实认证信息</span><span class="center middle">2.设置密码</span><span class="active center">3.修改成功</span>
+            </p>
+            <div class="login">
+                <img src="__PUBLIC__/image/seccess@2x.png" class="seccess-img-tip">
+                <h4>修改密码成功，请重新登录！</h4>
+                <h5 class="sign-num"><span id="jumptime">5</span><span>秒后跳转到登录页面</span></h5>
+            </div>
+        </div> 
+    </div>
+</section>
+
+<!--{include file="Common:footer" /}-->
+
+<!--{include file="Common:js" /}-->
+<script>
+    (function(){
+        var jumptime = document.getElementById('jumptime'),href = "{:U('member/login')}";
+        var interval = setInterval(function(){
+            var time = --jumptime.innerHTML;
+            if(time <= 0) {
+                location.replace(href);
+                clearInterval(interval);
+            };
+        }, 1000);
+    })();
+</script>
+</body>
+</html>

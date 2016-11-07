@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head><title>来福直播</title>
+    <!--{include file="Common:header"/}-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/activity.min.css">
+</head>
+<body>
+
+<!--{include file="Common:header_nav"/}-->
+
+<section class="activity-page">
+    
+    <section class="filter-container">
+        <div class="container">
+            <div class="filter-nav">
+                <dl>
+                    <dt>活动:</dt>
+                    <dd>
+                        <nav>
+                            <a href="{:U('activity/index',array('cast'=>0,'sort'=>$sort,'slive'=>$slive,'tag'=>$tag))}" <!--{if condition="$cast === 0"}-->class="active"<!--{/if}-->>全部</a>
+                            <!--{foreach name="cast_arr" item="items"}-->
+                            <a href="{:U('activity/index',array('cast'=>$key,'sort'=>$sort,'slive'=>$slive,'tag'=>$tag))}" <!--{if condition="$cast === $key"}-->class="active"<!--{/if}-->>{$items}</a>
+                            <!--{/foreach}-->
+                        </nav>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>类型:</dt>
+                    <dd>
+                        <nav>
+                            <a href="{:U('activity/index',array('cast'=>$cast,'sort'=>0,'slive'=>$slive,'tag'=>$tag))}" <!--{if condition="$sort == 0"}-->class="active"<!--{/if}-->>全部</a>
+                            <!--{foreach name="sort_arr" item="items"}-->
+                            <a href="{:U('activity/index',array('cast'=>$cast,'sort'=>$key,'slive'=>$slive,'tag'=>$tag))}" <!--{if condition="$sort == $key"}-->class="active"<!--{/if}-->>{$items}</a>
+                            <!--{/foreach}-->
+                        </nav>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>状态:</dt>
+                    <dd>
+                        <nav>
+                            <a href="{:U('activity/index',array('cast'=>$cast,'sort'=>$sort,'slive'=>0,'tag'=>$tag))}" <!--{if condition="$slive === 0"}-->class="active"<!--{/if}-->>全部</a>
+                            <!--{foreach name="slive_arr"  item="items"}-->
+                            <a href="{:U('activity/index',array('cast'=>$cast,'sort'=>$sort,'slive'=>$key,'tag'=>$tag))}" <!--{if condition="$slive == $key"}-->class="active"<!--{/if}-->>{$items}</a>
+                            <!--{/foreach}-->
+                        </nav>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>分类:</dt>
+                    <dd>
+                        <nav>
+                            <a href="{:U('activity/index',array('cast'=>$cast,'sort'=>$sort,'slive'=>$slive,'tag'=>0))}" <!--{if condition="$tag == 0"}-->class="active"<!--{/if}-->>全部</a>
+                            <!--{foreach name="tag_arr" item="items"}-->
+                            <a href="{:U('activity/index',array('cast'=>$cast,'sort'=>$sort,'slive'=>$slive,'tag'=>$key))}" <!--{if condition="$tag == $key"}-->class="active"<!--{/if}-->>{$items}</a>
+                            <!--{/foreach}-->
+                        </nav>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+    
+    <section class="card-container">
+        <div class="container">
+            
+            <div class="card-control">
+                <!--{foreach name="order_arr" item="items"}-->
+                <a href="{:U('activity/index',array('cast'=>$cast,'sort'=>$sort,'slive'=>$slive,'tag'=>$tag,'order'=>$key))}" <!--{if condition="$order == $key"}-->class="active"<!--{/if}-->>{$items}</a>
+                <!--{/foreach}-->
+            </div>
+            
+            <div class="card-center">
+                <div class="row">
+                    <!--{volist name="list" id="vo"}-->
+                    <div class="card col-md-4">
+                        <div class="card-container">
+                            <a href="{:U('activity/activityDetail',array('id'=>$vo['id']))}">
+                                <div style="background:url({$vo.imgpath})" class="img-container">
+                                    <span class="left-type">{$slive_arr[$vo['play_status']]}</span>
+                                    <!--{if condition="$vo['isexample'] == 1"}--><span class="right-type">{$slive_arr[$vo['isexample']]}</span><!--{/if}-->
+                                    <span class="like-center">
+                                        <i class="glyphicon glyphicon-eye-open first-icon">{$vo.clicknums}</i>
+                                        <i class="glyphicon glyphicon-heart">{$vo.praises}</i>
+                                    </span>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-header">
+                                        <div class="title">{$vo.subject}</div>
+                                        <!--{if condition="$vo['play_status'] == 1"}-->
+                                        <a class="enter-btn submitOrder" aid="{$vo['id']}" >{$vo.enroll}</a>
+                                        <!--{else /}-->
+                                            <a class="enter-btn" href="{:U('activity/detail',array('id'=>$vo['id']))}"><!--{if condition="$vo['play_status'] == 2"}-->进入直播 <!--{else /}-->观看活动 <!--{/if}--></a>
+                                        <!--{/if}-->
+                                    </div>
+                                    <div class="card-text">
+                                        <div class="card-time">时间 {$vo.begindate|date='Y/m/d',###} {$vo.begindate|get_weekend=###} {$vo.begindate|date='H:i',###}～{$vo.enddate|date='H:i',###}</div>
+                                        <div class="card-address">地点 {$vo.address}</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--{/volist}-->
+                </div>
+            </div>
+            <div class="text-center">
+                <nav>
+                    <ul class="pagination">
+                        {$page}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+</section>
+
+<!--{include file="Common:footer" /}-->
+
+<!--{include file="Common:js" /}-->
+
+<script>
+    $(".submitOrder").click(function(){
+        var islogin = "{$islogin}";
+        var aid = $(this).attr('aid');
+        if(islogin ==1){
+            var url = "{:U('ajax/addActivityOrders')}";
+            $.getJSON(url,{aid:aid},function(data){
+                if(data.code == 0 || data.code == 200 ){
+                    $(".submitOrder").html('已报名');
+                }
+                layer.msg(data.data);
+
+            })
+
+        }else{
+            window.location.href = "{:U('Member/login')}";
+
+        }
+    });
+
+</script>
+</body>
+</html>

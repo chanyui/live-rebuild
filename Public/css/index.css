@@ -1,0 +1,420 @@
+.index-page .banner-section .carousel-indicators {
+  margin-bottom: 0;
+}
+.index-page .banner-section .carousel-indicators li {
+  width: 12px;
+  height: 12px;
+  margin: 0 10px;
+}
+.index-page .banner-section .carousel-indicators .active {
+  width: 15px !important;
+  height: 15px !important;
+}
+.index-page .banner-section .carousel-inner .item div {
+  width: 100%;
+  padding: 20.5% 0;
+}
+
+.index-page .banner-section .carousel-inner .item .slider-banner{
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat:no-repeat !important;
+}
+.index-page .about-section {
+  color: #333;
+  background-color: #fedc32;
+  text-align: center;
+  padding-top: 22px;
+  padding-bottom: 8px;
+}
+.index-page .about-section span {
+  font-size: 18px;
+  margin: 0 11px;
+}
+.index-page .about-section .title {
+  font-weight: bold;
+}
+.index-page .about-section a {
+  font-size: 18px;
+  border: 1px solid #333;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 7px 21px;
+  margin-left: 11px;
+}
+.index-page .hour-section {
+  background-color: #f0f0f0;
+}
+.index-page .hour-section .p-b-m {
+  padding: 60px 0;
+}
+.index-page .hour-section a {
+  display: table;
+  width: 100%;
+  height: 100%;
+  padding: 20px 10px 20px 110px;
+  background-position: left center;
+  background-image: url(../image/asset-01.jpg);
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border-bottom: 0 solid #ffc100;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  transition: all .3s ease;
+  box-shadow: 0 1px 8px transparent;
+}
+.index-page .hour-section a div {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.index-page .hour-section a:hover {
+  -webkit-transform: translate(0, -6px);
+  -ms-transform: translate(0, -6px);
+  -o-transform: translate(0, -6px);
+  transform: translate(0, -6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+.index-page .hour-section .timer span {
+  font-size: 16px;
+}
+.index-page .hour-section .timer em {
+  font-size: 60px;
+  line-height: 60px;
+  color: #ffc100;
+  font-style: normal;
+}
+.index-page .hour-section .timer em span {
+  font-size: 60px;
+}
+.index-page .hour-section .timer span:hover {
+  text-decoration: none;
+}
+.index-page .hour-section .poster {
+  display: table-cell;
+  width: 100px;
+}
+.index-page .hour-section .poster img {
+  width: 100%;
+  height: auto;
+}
+.index-page .hour-section .more {
+  white-space: nowrap;
+  color: #ffc100;
+  line-height: 60px;
+  text-align: right;
+  padding-left: 10px;
+  border: none;
+}
+.index-page .hour-section .h4 {
+  margin-top: 1px;
+  margin-bottom: 8px;
+}
+.index-page .hour-section .h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.index-page .timer {
+  width: 360px;
+  white-space: nowrap;
+}
+.index-page .bannerWrap-section {
+  color: #fff;
+  background-color: #000;
+}
+.index-page .bannerWrap-section #demo {
+  border-top: 1px solid #555;
+  padding-top: 10px;
+}
+.index-page .bannerWrap-section .block-title {
+  font-size: 24px;
+  padding-top: 60px;
+  padding-bottom: 15px;
+}
+.index-page .bannerWrap-section .block-title a {
+  margin-left: 25px;
+  font-size: 14px;
+  text-decoration: none;
+}
+.index-page .bannerWrap-section .block-title a .glyright-more {
+  color: #fedc32;
+  float: right;
+  font-size: 22px;
+}
+.index-page .bannerWrap-section .block-title a .glyright-more span {
+  display: inline-block;
+  float: right;
+  color: #fedc32;
+  line-height: 18px;
+  margin-left: 7px;
+}
+.index-page .bannerWrap-section .carousel-control {
+  top: -18%;
+}
+.index-page .bannerWrap-section .carousel-control.left {
+  background-image: none !important;
+}
+.index-page .bannerWrap-section .carousel-control.right {
+  background-image: none !important;
+}
+.index-page .bannerWrap-section .carousel .col-md-4 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.index-page .bannerWrap-section .carousel .content {
+  position: relative;
+  display: table;
+  width: 100%;
+  color: #fff;
+  background-color: #f5f5f5;
+  margin-bottom: 60px;
+}
+.index-page .bannerWrap-section .carousel .content .poster {
+  position: relative;
+}
+.index-page .bannerWrap-section .carousel .content .poster .bg {
+  vertical-align: top;
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+}
+.index-page .bannerWrap-section .carousel .content .poster .meta {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 3px;
+  color: #222;
+  background-color: #fedc32;
+}
+.index-page .bannerWrap-section .carousel .content .poster .sign {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px;
+  color: #fff;
+  background-color: #333;
+}
+.index-page .bannerWrap-section .carousel .content .poster .sign i {
+  float: left;
+  padding-left: 1px;
+}
+.index-page .bannerWrap-section .carousel .content .poster .sign span {
+  padding-left: 4px;
+  display: inline-block;
+  float: right;
+  line-height: 9px;
+}
+.index-page .bannerWrap-section .carousel .content .poster .sign .first-icon {
+  padding-right: 10px;
+}
+.index-page .bannerWrap-section .carousel .content .desc .title {
+  color: #333 !important;
+  font-size: 18px;
+  line-height: 25px;
+}
+.index-page .bannerWrap-section .carousel .content .desc hr {
+  margin: 0 0 15px 0;
+}
+.index-page .bannerWrap-section .carousel .content .desc dl {
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+.index-page .bannerWrap-section .carousel .content .desc dl dt {
+  font-weight: bold;
+  float: left;
+  margin-right: 10px;
+}
+.index-page .bannerWrap-section .carousel .content .desc dl .join {
+  display: inline-block;
+  background-color: #34affc;
+  color: #fff;
+  padding: 2px 16px;
+  margin-top: 15px;
+}
+.index-page .card-container {
+  padding-bottom: 60px;
+}
+.index-page .card-container #card-control {
+  border-top: 1px solid #d8d8d8;
+  padding-top: 10px;
+}
+.index-page .card-container .card-center .card-content .card-header .title {
+  margin-right: 114px;
+}
+.index-page .card-container .card-center .card-content .card-header .see-btn {
+  display: block;
+  text-decoration: none;
+  width: 60px;
+  height: 24px;
+  background: #fff;
+  color: #33AFFC;
+  line-height: 24px;
+  font-size: 12px;
+  text-align: center;
+  position: absolute;
+  right: 60px;
+  top: 0;
+  border: 1px solid #33AFFC;
+}
+.index-page .card-container .card-center .card-content .card-text .card-title {
+  color: #666;
+  font-size: 12px;
+}
+.index-page .card-container .card-center .card-content .card-text .card-time {
+  margin-top: 0;
+}
+.index-page .wonderful-section {
+  padding-bottom: 60px;
+  background-color: #f0f0f0;
+}
+.index-page .wonderful-section .title {
+  margin-right: 0;
+}
+.index-page .wonderful-section .col-xs-1,
+.index-page .wonderful-section .col-sm-1,
+.index-page .wonderful-section .col-md-1,
+.index-page .wonderful-section .col-lg-1,
+.index-page .wonderful-section .col-xs-2,
+.index-page .wonderful-section .col-sm-2,
+.index-page .wonderful-section .col-md-2,
+.index-page .wonderful-section .col-lg-2,
+.index-page .wonderful-section .col-xs-3,
+.index-page .wonderful-section .col-sm-3,
+.index-page .wonderful-section .col-md-3,
+.index-page .wonderful-section .col-lg-3,
+.index-page .wonderful-section .col-xs-4,
+.index-page .wonderful-section .col-sm-4,
+.index-page .wonderful-section .col-md-4,
+.index-page .wonderful-section .col-lg-4,
+.index-page .wonderful-section .col-xs-5,
+.index-page .wonderful-section .col-sm-5,
+.index-page .wonderful-section .col-md-5,
+.index-page .wonderful-section .col-lg-5,
+.index-page .wonderful-section .col-xs-6,
+.index-page .wonderful-section .col-sm-6,
+.index-page .wonderful-section .col-md-6,
+.index-page .wonderful-section .col-lg-6,
+.index-page .wonderful-section .col-xs-7,
+.index-page .wonderful-section .col-sm-7,
+.index-page .wonderful-section .col-md-7,
+.index-page .wonderful-section .col-lg-7,
+.index-page .wonderful-section .col-xs-8,
+.index-page .wonderful-section .col-sm-8,
+.index-page .wonderful-section .col-md-8,
+.index-page .wonderful-section .col-lg-8,
+.index-page .wonderful-section .col-xs-9,
+.index-page .wonderful-section .col-sm-9,
+.index-page .wonderful-section .col-md-9,
+.index-page .wonderful-section .col-lg-9,
+.index-page .wonderful-section .col-xs-10,
+.index-page .wonderful-section .col-sm-10,
+.index-page .wonderful-section .col-md-10,
+.index-page .wonderful-section .col-lg-10,
+.index-page .wonderful-section .col-xs-11,
+.index-page .wonderful-section .col-sm-11,
+.index-page .wonderful-section .col-md-11,
+.index-page .wonderful-section .col-lg-11,
+.index-page .wonderful-section .col-xs-12,
+.index-page .wonderful-section .col-sm-12,
+.index-page .wonderful-section .col-md-12,
+.index-page .wonderful-section .col-lg-12 {
+  padding-left: 0;
+}
+.index-page .wonderful-section #back {
+  border-top: 1px solid #d8d8d8;
+  padding-top: 10px;
+}
+.index-page .wonderful-section .left .img-container {
+  padding-bottom: 71%;
+}
+.index-page .wonderful-section .card-container {
+  overflow: hidden;
+}
+.index-page .wonderful-section .right {
+  margin-bottom: 20px;
+}
+.index-page .wonderful-section .right .card-content {
+  margin-top: 20px;
+}
+@media (max-width: 1093px) {
+  .timer {
+    width: 100%;
+    float: left;
+  }
+  .over {
+    float: left;
+  }
+  .over .poster,
+  .over .title {
+    float: left;
+  }
+}
+@media (max-width: 847px) {
+  .hour-section a {
+    width: 0;
+    background-image: none !important;
+    zoom: 0.6;
+  }
+  .hour-section .visible-xs {
+    display: inline-block;
+    font-style: normal;
+    float: left;
+    position: absolute;
+    top: 0;
+  }
+  .hour-section .timer span {
+    overflow: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .title h5,
+  h4 {
+    display: none;
+  }
+  .timer {
+    margin-top: 25px;
+  }
+}
+.block-title {
+  font-size: 24px;
+  padding-top: 60px;
+  padding-bottom: 15px;
+}
+.block-title a {
+  margin-left: 25px;
+  font-size: 14px;
+  text-decoration: none;
+}
+.block-title a .glyright-more {
+  padding-top: 20px;
+  color: #333;
+  float: right;
+  font-size: 22px;
+}
+.block-title a .glyright-more span {
+  display: inline-block;
+  float: right;
+  color: #333;
+  line-height: 18px;
+  margin-left: 7px;
+  font-size: 12px;
+}
+.block-title a .glyright-more span:hover {
+  color: #fedc32;
+}
+.block-title a .glyright-more:hover {
+  color: #fedc32;
+}
+.block-title .title {
+  margin-left: -20px;
+}

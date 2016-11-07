@@ -1,0 +1,194 @@
+.login-page {
+  min-height: 500px;
+  background: url(../image/loginbg@2x.png) no-repeat center center;
+  background-size: cover;
+  padding: 80px 0;
+}
+.login-page .form-container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login-page .form-container .login {
+  background: #fff;
+  padding: 20px 80px;
+}
+.login-page .form-container .login .login-page-form {
+  margin-top: 30px;
+}
+.login-page .form-container .login .login-nav {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0;
+  margin: 0;
+}
+.login-page .form-container .login .login-nav li {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.login-page .form-container .login .login-nav li a {
+  font-size: 18px;
+  color: #999;
+  text-decoration: none;
+}
+.login-page .form-container .login .login-nav li a:active,
+.login-page .form-container .login .login-nav li a:hover {
+  text-decoration: none;
+}
+.login-page .form-container .login .login-nav li.active {
+  color: #333;
+  border-bottom: 2px solid #FEDC32;
+}
+.login-page .form-container .login .form-group {
+  /*margin-top:30px;*/
+  width: 100%;
+  position: relative;
+  margin-bottom: 0;
+  height: 72px;
+}
+.login-page .form-container .login .form-group .error {
+  font-size: 12px;
+  color: #E52A3A;
+  font-weight: inherit;
+  line-height: 1em;
+}
+.login-page .form-container .login .form-group .regist-container {
+  margin-right: 30px;
+  line-height: 1em;
+  margin-top: 0;
+}
+.login-page .form-container .login .form-group .regist-container input[type="radio"]:checked + label {
+  color: #444;
+}
+.login-page .form-container .login .form-group .regist-container label {
+  font-size: 14px;
+  color: #999;
+  font-weight: inherit;
+  margin-left: 5px;
+  line-height: 1em;
+  cursor: pointer;
+}
+.login-page .form-container .login .form-group.regist-form-group {
+  margin-top: 20px;
+  height: 45px;
+}
+.login-page .form-container .login .form-group input[type="text"],
+.login-page .form-container .login .form-group input[type="password"] {
+  width: 100%;
+  border: 1px solid #D8D8D8;
+  padding: 0 10px;
+  height: 42px;
+}
+.login-page .form-container .login .form-group input[type="text"]:focus,
+.login-page .form-container .login .form-group input[type="password"]:focus {
+  outline: none;
+}
+.login-page .form-container .login .form-group.forget-pwd {
+  margin-top: 15px;
+  color: #666;
+  font-size: 12px;
+  overflow: hidden;
+  height: auto;
+}
+.login-page .form-container .login .form-group.forget-pwd a {
+  font-size: 12px;
+  line-height: 1em;
+  text-decoration: none;
+}
+.login-page .form-container .login .form-group.forget-pwd .pull-right {
+  line-height: 1em;
+}
+.login-page .form-container .login .form-group.forget-pwd .pull-right label {
+  color: #666;
+  margin-left: 10px;
+  font-weight: inherit;
+  cursor: pointer;
+}
+.login-page .form-container .login .form-group.pwd-input {
+  margin-bottom: 0;
+}
+.login-page .form-container .login .form-group.pwd-input input {
+  padding-right: 45px;
+}
+.login-page .form-container .login .form-group.pwd-input.login-pwd-input {
+  height: auto;
+}
+.login-page .form-container .login .form-group.pwd-input .glyphicon {
+  position: absolute;
+  height: 42px;
+  width: 42px;
+  line-height: 42px;
+  text-align: center;
+  top: 0;
+  right: 0;
+  border: 1px solid #D8D8D8;
+  cursor: pointer;
+}
+.login-page .form-container .login .form-group.pwd-input .glyphicon.glyphicon-eye-close {
+  color: #999;
+}
+.login-page .form-container .login .form-group.pwd-input .glyphicon.glyphicon-eye-open {
+  color: #333;
+}
+.login-page .form-container .login .form-group.hide-phone {
+  display: none;
+}
+.login-page .form-container .login .form-group.hide-people {
+  display: none;
+}
+.login-page .form-container .login .form-group.send-input input {
+  padding-right: 100px;
+}
+.login-page .form-container .login .form-group.send-input .btn-send-phone {
+  position: absolute;
+  height: 42px;
+  width: 100px;
+  line-height: 42px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  background: #f0f0f0;
+  top: 0;
+  right: 0;
+  border: 1px solid #D8D8D8;
+  cursor: pointer;
+}
+.login-page .form-container .login .live-submit-btn {
+  width: 100%;
+  height: 42px;
+  text-align: center;
+  line-height: 42px;
+  background: #FEDC32;
+  color: #222;
+  margin-top: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+.login-page .form-container .login .live-submit-btn.live-btn-no-margin {
+  margin-top: 0;
+}
+@media (max-width: 520px) {
+  .login-page .form-container .login {
+    width: auto;
+    padding: 10px 10px;
+  }
+}
+.login-page .form-container .login-tip {
+  padding: 10px 80px;
+  color: #E52A3A;
+  background: #fff;
+  margin-top: 10px;
+}
+@media (max-width: 520px) {
+  .login-page .form-container .login-tip {
+    padding: 10px 10px;
+  }
+}
+@media (max-width: 520px) {
+  .login-page .form-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: auto;
+  }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--{include file="Common:header"/}-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/authentication.css">
+</head>
+<body>
+
+<!--{include file="Common:header_nav"/}-->
+
+<section class="authentication-page">
+    <div class="container">
+        <div class="authentication">
+            <p class="auth-head">
+                <span class="left">1.核实认证信息</span><span class="active center">2.设置密码</span><span class="right">3.修改成功</span>
+            </p>
+            <div class="auth-content">
+                <form id="registForm" action="{:U('member/resetpwd')}" method="post">
+                    <div class="form-group pwd-input">
+                        <input id="password" type="password" autocomplete="off" name="password" placeholder="*新密码">
+                        <span class="btn-eyes glyphicon glyphicon-eye-close"></span>
+                    </div>
+                    <div class="form-group pwd-input">
+                        <input id="repassword" type="password" autocomplete="off" name="confirm_password" placeholder="*重复密码">
+                        <span class="btn-eyes glyphicon glyphicon-eye-close"></span>
+                    </div>
+                    <input type="hidden" name="token" value="{$token}">
+                    <button type="submit" class="live-submit-btn">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--{include file="Common:footer" /}-->
+
+<!--{include file="Common:js" /}-->
+<script src="__PUBLIC__/js/jquery.validate.min.js"></script>
+<script src="__PUBLIC__/js/resetpwd.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!--{if condition="$sort != 0 or $foreshow"}-->
+<div class="container">
+    <div class="block-title container">
+        <span class="title">活动报名</span>
+        <a <!--{if condition="$sort == 1"}-->class="card-active"<!--{/if}--> onclick="foreshow(1);return false;" href="javascript:void(0);">活动预告</a>
+        <a <!--{if condition="$sort == 2"}-->class="card-active"<!--{/if}--> onclick="foreshow(2);return false;" href="javascript:void(0);">直播预告</a>
+        <a <!--{if condition="$sort == 3 or $sort == 4"}-->class="card-active"<!--{/if}--> href="#card-control" data-toggle="collapse">两创示范</a>
+        <a href="{:U('activity/index',array('slive'=>1))}"><i class="glyphicon glyphicon-circle-arrow-right glyright-more"><span>更多</span></i></a>
+    </div>
+    <div id="card-control" class="collapse container <!--{if condition="$sort == 3 or $sort == 4"}-->in<!--{/if}-->">
+        <p>
+            <a <!--{if condition="$sort == 3"}-->class="card-active"<!--{/if}--> onclick="foreshow(3);return false;" href="javascript:void(0);">直播</a>
+            <a <!--{if condition="$sort == 4"}-->class="card-active"<!--{/if}--> onclick="foreshow(4);return false;" href="javascript:void(0);"> 活动</a>
+        </p>
+    </div>
+    <div class="card-center">
+        <div class="row">
+            <!--{volist name="foreshow" id="vo"}-->
+            <div class="card col-md-4">
+                <div class="card-container">
+                    <a href="{:U('activity/detail',array('id'=>$vo['id']))}">
+                        <div style="background:url({$vo.imgpath})" class="img-container">
+                            <!--{if condition="$vo['iscast'] == 1"}--><span class="left-type">直播</span><!--{/if}-->
+                            <!--{if condition="$vo['isexample'] == 1"}--><span class="right-type">两创示范</span><!--{/if}-->
+                            <span class="like-center">
+                                <i class="glyphicon glyphicon-eye-open first-icon">{$vo.clicknums}</i>
+                                <i class="glyphicon glyphicon-heart">{$vo.praises}</i>
+                            </span>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="title">{$vo.subject}</div>
+                                <a class="see-btn">关注</a>
+                                <a class="enter-btn submitOrder" aid="{$vo['id']}" >{$vo.enroll}</a>
+                            </div>
+                            <div class="card-text">
+                                <div class="card-time">时间 {$vo.begindate|date='Y/m/d',###} {$vo.begindate|get_weekend=###} {$vo.begindate|date='H:i',###}～{$vo.enddate|date='H:i',###}</div>
+                                <div class="card-address">地点 {$vo.address}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!--{/volist}-->
+        </div>
+    </div>
+</div>
+<script>
+    $(".submitOrder").click(function(){
+        var islogin = "{$islogin}";
+        var aid = $(this).attr('aid');
+        if(islogin ==1){
+            var url = "{:U('ajax/addActivityOrders')}";
+            $.getJSON(url,{aid:aid},function(data){
+                if(data.code == 0 || data.code == 200 ){
+                    $(".submitOrder").html('已报名');
+                }
+                layer.msg(data.data);
+
+            })
+
+        }else{
+            window.location.href = "{:U('Member/login')}";
+
+        }
+    });
+</script>
+<!--{/if}-->

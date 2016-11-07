@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--{include file="Common:header"/}-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.min.css">
+</head>
+<body>
+
+<!--{include file="Common:header_nav"/}-->
+
+<section class="login-page">
+    <div class="form-container">
+        <div class="login">
+            <form id="loginForm" action="{:U('member/login')}" method="post">
+                <ul class="login-nav">
+                    <li class="active"><a href="#">登录</a></li>
+                    <li><a href="{:U('member/register')}">注册</a></li>
+                </ul>
+                <div class="content-login login-page-form">
+                    <div class="form-group">
+                        <input id="username" type="text" name="username" autocomplete="off" placeholder="用户名/邮箱/手机号">
+                    </div>
+                    <div class="form-group pwd-input login-pwd-input">
+                        <input id="password" type="password" name="password" autocomplete="off" placeholder="6-16位密码，区分大小写，不能用空格">
+                        <span class="btn-eyes glyphicon glyphicon-eye-close"></span>
+                    </div>
+                    <div class="form-group forget-pwd">
+                        <a href="{:U('member/forgetpwd')}" class="pull-left">忘记密码</a>
+                        <span class="pull-right">
+                            <input id="rember" name="rember" type="checkbox" value="1">
+                            <label for="rember">下次自动登录</label>
+                        </span>
+                    </div>
+                    <button class="live-submit-btn">立即登录</button>
+                </div>
+            </form>
+        </div>
+        <div class="login-tip" style="display:none;"></div>
+    </div>
+</section>
+
+<!--{include file="Common:footer" /}-->
+
+<!--{include file="Common:js" /}-->
+<script src="__PUBLIC__/js/login.js"></script>
+
+</body>
+</html>

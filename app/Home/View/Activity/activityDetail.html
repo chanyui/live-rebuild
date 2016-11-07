@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head><title>来福直播</title>
+    <!--{include file="Common:header" /}-->
+</head>
+<body>
+<!--{include file="Common:header_nav" /}-->
+
+<link rel="stylesheet" type="text/css" href="http://live2.busionline.com/Public/css/activityDetail.min.css">
+
+<section class="activity-detail">
+    <div class="container"><p class="font-title-main">{$info.category.name} /<span class="font-title-content">{$info.subject}</span>
+    </p>
+        <div class="live-container row">
+            <div class="col-md-9">
+                <div style="background:url({$info.imgpath})"
+                     class="play-container">
+                    <span class="left-type">{$info.playstatus}</span>
+                    <!--{eq name="info.isexample" value="1"}-->
+                        <span class="right-type">两创示范</span>
+                    <!--{/eq}-->
+                    <div class="overflow">
+                        <div class="control-center text-center"><p class="title-tip">距离直播开始还有</p>
+                            <div id="time-control" data-time="1477666800000" class="text-center time-control"><span
+                                    class="time-num time-d">0</span>天<span class="time-num time-h">0</span>小时<span
+                                    class="time-num time-m">0</span>分<span class="time-num time-s">0</span>秒
+                            </div>
+                            <div class="btns-control"><span class="live-btn left-btn">关注</span><span
+                                    class="live-btn right-btn"> 立即报名</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="for-padding">
+                    <div class="activity-home"><span class="glyphicon glyphicon-certificate"></span>
+                        <div class="content">主办方：{$info.orgnize}</div>
+                    </div>
+                    <div class="activity-home"><span class="glyphicon glyphicon-user"></span>
+                        <div class="content">已报名{$info.order_count}人</div>
+                    </div>
+                    <div class="activity-home"><span class="glyphicon glyphicon-time"></span>
+                        <div class="content">{$info.begindate|date='Y/m/d',###} {$info.begindate|get_weekend=###} {$info.begindate|date='H:i',###}～{$info.enddate|date='H:i',###}</div>
+                    </div>
+                    <div class="activity-home"><span class="glyphicon glyphicon-map-marker"></span>
+                        <div class="content">{$info.address}</div>
+                    </div>
+                    <div class="map-contianer"><p class="map-title">现场地图</p>
+                        <div id="allmap" class="map-content"></div>
+                        <a target="_blank"
+                           href="http://map.baidu.com/?latlng={$info.lat},{$info.lng}&title={$info.address}&autoOpen=true"
+                           class="map-btn">百度地图</a></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="interactive-control">
+            <nav class="nav-interactive">
+                <ul class="nav">
+                    <li id="activitycontent" class="active"><a style="cursor:pointer;">活动介绍</a></li>
+                    <li id="enter-list" ><a style="cursor:pointer;">报名人列表</a></li>
+                    <li id="comments-container" ><a style="cursor:pointer;">评论</a></li>
+                </ul>
+            </nav>
+            <div class="activitycontent">
+                {$info.content}
+            </div>
+            <div class="bottom-tip">
+                <!--{eq name="info.isexample" value="1"}-->
+                    <h3 class="text-center">本活动受杭州市小微企业创业创新基地城市示范活动券支持</h3>
+                <!--{/eq}-->
+            </div>
+        </div>
+
+
+        <!--报名人列表-->
+        <div class="enter-list" style="display: none;">
+
+
+        </div>
+
+
+
+        <!--评论-->
+        <div class="comments-container" style="display: none;">
+            <div class="header-content">
+                <img src="http://git.oschina.net/uploads/33/277833_xudao.png?1463561675" class="header-avator">
+                <span class="header-name">阮湘婷</span>
+            </div>
+            <textarea placeholder="您还可以输入200字哦" class="textarea"></textarea>
+
+            <div class="commend-control">
+                <div class="commend-btn">发表评论</div>
+                <div class="checkbox-container">
+                    <input id="nick" type="checkbox"><label for="nick">我要匿名评论</label>
+                </div>
+            </div>
+            <div class="commend-list">
+                <div class="commend-item">
+                    <div class="commend-header">
+                        <img src="http://git.oschina.net/uploads/33/277833_xudao.png?1463561675" class="header-avator">
+
+                        <div class="commend-header-content">
+                            <p class="name">阮湘婷</p>
+
+                            <p class="date-time">2016-10-20 13:10</p></div>
+                    </div>
+                    <p class="commend-content">
+                        做php开发三年了，看完这个课程感觉可以转app开发了，课程的项目虽然挺简单的，但对掌握整个app的开发流程有很大帮助，了解了一个app项目从开始到最后上线的整个过程，剩下就是写细节的问题了，总之就是麻雀虽小五脏俱全吧，讲的不错。</p>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="text-center">
+            <nav>
+                <ul class="pagination">
+                    <li><span>上一页</span></li>
+                    <li class="active"><span>1</span></li>
+                    <li><span>2</span></li>
+                    <li><span>3</span></li>
+                    <li><span>4</span></li>
+                    <li><span>下一页</span></li>
+                </ul>
+            </nav>
+        </div>
+        -->
+
+
+
+        <p class="recommend-activity">活动推荐</p>
+        <div class="recommend-card row">
+            <!--{volist name="recommend" id="vo"}-->
+                <div class="card col-md-4">
+                <div class="card-container">
+                    <a href="{:U('activity/activityDetail?id='.$vo['id'])}">
+                        <div style="background:url({$vo.imgpath})" class="img-container">
+                            <span class="left-type">{$vo.playstatus}</span>
+                            <!--{eq name="vo.isexample" value="1"}-->
+                                <span class="right-type">两创示范</span>
+                            <!--{/eq}-->
+                            <span class="like-center">
+                                <i class="glyphicon glyphicon-eye-open first-icon">{$vo.clicknums}</i>
+                                <i class="glyphicon glyphicon-heart">{$info.praises}</i></span>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="title">{$vo.subject}</div>
+                                <!--{switch name="vo.play_status"}-->
+                                    <!--{case value="1"}--><a class="enter-btn">立即报名</a><!--{/case}-->
+                                    <!--{case value="2"}--><a class="enter-btn" href="{:U('activity/activityDetail?id='.$vo['id'])}">进入直播</a><!--{/case}-->
+                                    <!--{case value="3"}--><a class="enter-btn" href="{:U('activity/activityDetail?id='.$vo['id'])}">观看活动</a><!--{/case}-->
+                                <!--{/switch}-->
+                            </div>
+
+                            <div class="card-text">
+                                <div class="card-time">时间 {$vo.begindate|date='Y/m/d',###} {$vo.begindate|get_weekend=###} {$vo.begindate|date='H:i',###}～{$vo.enddate|date='H:i',###}</div>
+                                <div class="card-address">{$vo.address}</div>
+                            </div>
+                        </div>
+                </a>
+                </div>
+            </div>
+            <!--{/volist}-->
+        </div>
+    </div>
+</section>
+<!--{include file="Common:footer" /}-->
+<!--{include file="Common:js" /}-->
+
+<script>
+    var aid = "{$info['id']}";
+    $.ajax({
+        type:"GET",
+        dateType:'html',
+        url:"{:U('ajax/getActivityOrderByActivityId')}",
+        data:{"aid":aid},
+        success: function (data) {
+            $(".enter-list").html(data);
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        dataType : 'html',
+        url: "{:U('ajax/getCommentByActivityId')}",
+        data: {"aid":aid},
+        success: function(data){
+            $(".commend-list").html(data);
+        }
+    });
+
+
+    $(function(){
+        $("#activitycontent").click(function () {
+            $(".activitycontent").show();
+            $(".comments-container").hide();
+            $('.enter-list').hide();
+        });
+        $("#enter-list").click(function(){
+            $(".activitycontent").hide();
+            $(".comments-container").hide();
+            $('.enter-list').show();
+        });
+        $("#comments-container").click(function () {
+            $(".activitycontent").hide();
+            $(".enter-list").hide();
+            $(".comments-container").show();
+        });
+    })
+
+</script>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=01PA49qOWKHvwzvpAuXqGCd0"></script>
+<script>var map = new BMap.Map("allmap");
+var point = new BMap.Point(116.404, 39.915);
+map.centerAndZoom(point, 15);
+map.disableDragging();
+var marker = new BMap.Marker(point);  // 创建标注
+map.addOverlay(marker);               // 将标注添加到地图中
+//marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+var time = 0;
+$(document).ready(function () {
+    time = $('#time-control').attr('data-time');
+    coumtDownTime();
+});
+
+function coumtDownTime() {
+    var minSeconds = time,
+            nowMinSeconds = (new Date()).getTime(),
+            minusMinSeconds = (minSeconds - nowMinSeconds) / 1000;
+
+    if (minusMinSeconds > 0) {
+        setTimeout(function () {
+            coumtDownTime();
+            var hours = Math.floor(minusMinSeconds / 60 / 60),
+                    m = Math.floor((minusMinSeconds - hours * 60 * 60) / 60),
+                    s = Math.floor((minusMinSeconds - hours * 60 * 60 - m * 60)),
+                    d = parseInt(hours / 24),
+                    h = hours - d * 24;
+            var data = {
+                d: d,
+                h: h,
+                m: m,
+                s: s
+            };
+
+            renderHtml(true, data);
+        }, 1000)
+    } else {
+        return false;
+    }
+
+}
+
+function renderHtml(status, data) {
+    if (status) {
+        $('.time-d').text(data.d);
+        $('.time-h').text(data.h);
+        $('.time-m').text(data.m);
+        $('.time-s').text(data.s);
+    }
+}</script>
+</body>
+</html>

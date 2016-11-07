@@ -1,0 +1,60 @@
+
+    <div class="orderlist">
+        <!--{volist name="list" id="vo"}-->
+        <div class="enter-item">
+            <img src="http://git.oschina.net/uploads/33/277833_xudao.png?1463561675" class="header-avator">
+            <div class="enter-content">
+                <div class="enter-content-header">
+                    <span class="pull-left">{$vo.user.nickname}</span>
+                    <span class="pull-right date-time">{$vo.postdate|date="Y-m-d h:i:s",###}</span>
+                </div>
+                <div class="enter-content-body">
+                    <span class="pull-left">{$vo.user.job}</span>
+                    <span class="pull-left">{$vo.user.company}</span>
+                </div>
+            </div>
+        </div>
+        <!--{/volist}-->
+    </div>
+
+
+    <div class="text-center">
+        <nav>
+            <ul class="pagination">
+                {$page}
+            </ul>
+        </nav>
+    </div>
+
+<script>
+
+    var aid = "{$aid}";
+    //报名人列表
+    function changeActivityOrdersUrl(){
+
+        $(".enter-list").find('li').each(function(){
+            var page = $(this).attr('page');
+            if(page){
+                $(this).find('a').removeAttr('href').css('cursor','pointer');
+            }
+        });
+    }
+    changeActivityOrdersUrl();
+
+    $(".enter-list").find('li').click(function(){
+        var page = $(this).attr('page');
+        var pagenum = "{$pagenum}";
+        $.ajax({
+            type: "GET",
+            dataType : 'html',
+            url: "{:U('ajax/getActivityOrderByActivityId')}",
+            data: {"aid":aid,p:page,pnum:pagenum},
+            success: function(data){
+                $(".enter-list").html(data);
+
+            }
+        });
+
+    });
+
+</script>

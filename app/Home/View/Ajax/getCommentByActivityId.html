@@ -1,0 +1,58 @@
+<!--{volist name="list" id="vo"}-->
+<div class="commend-item">
+    <div class="commend-header">
+        <img src="{$vo.user.avatar}"  class="header-avator">
+        <div class="commend-header-content">
+            <p class="name">{$vo.user.nickname}</p>
+            <p class="date-time">{$vo.addtime|date="Y-m-d h:i:s",###}</p>
+        </div>
+    </div>
+    <p class="commend-content">
+        {$vo.content}
+    </p>
+</div>
+<!--{/volist}-->
+
+<div class="text-center">
+    <nav>
+        <ul class="pagination">
+            {$page}
+        </ul>
+    </nav>
+</div>
+
+<script>
+
+    var aid = "{$aid}";
+
+    //评论
+    function changeCommentUrl(){
+
+        $(".comments-container").find('li').each(function(){
+            var page = $(this).attr('page');
+            if(page){
+                $(this).find('a').removeAttr('href').css('cursor','pointer');
+            }
+        });
+    }
+    changeCommentUrl();
+
+    $(".commend-list").find('li').click(function(){
+        var page = $(this).attr('page');
+        var pagenum = "{$pagenum}";
+        $.ajax({
+            type: "GET",
+            dataType : 'html',
+            url: "{:U('ajax/getCommentByActivityId')}",
+            data: {"aid":aid,p:page,pnum:pagenum},
+            success: function(data){
+                $(".commend-list").html(data);
+
+            }
+        });
+
+    });
+
+
+
+</script>

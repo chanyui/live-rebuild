@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--{include file="Common:header" /}-->
+</head>
+<body>
+
+<!--{include file="Common:header_nav" /}-->
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/search.min.css">
+<section class="search-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="text-center hr-content"><span class="title-tip">搜索结果</span></div>
+            </div>
+        </div>
+        <div class="breadcrumb">共找到{$count}个“{$keyword}”相关内容</div>
+        <div class="row card-center"><!--Created by xudao on 16/10/25.
+-->
+            <!--{volist name="result" id="vo"}-->
+            <div class="card col-md-4">
+                <div class="card-container"><a href="{:U('Activity/activityDetail',array('id'=>$vo['id']))}">
+                    <div style="background:url({$vo.imgpath})" class="img-container">
+                        <!--{switch name="vo.play_status"}-->
+                        <!--{case value="1"}--><span class="left-type">预告</span><!--{/case}-->
+                        <!--{case value="2"}--><span class="left-type">直播</span><!--{/case}-->
+                        <!--{case value="3"}--><span class="left-type">回顾</span><!--{/case}-->
+                        <!--{/switch}-->
+                        <!--{eq name='vo.isexample' value='1'}-->
+                            <span class="right-type">两创示范</span>
+                        <!--{/eq}-->
+                            <span class="like-center">
+                                <i class="glyphicon glyphicon-eye-open first-icon">{$vo.clicknums}</i>
+                                <i class="glyphicon glyphicon-heart">{$vo.praises}</i>
+                            </span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="title">{$vo.subject}</div>
+                            <!--TODO 报名地址、直播地址、观看活动-->
+                            <!--{switch name="vo['play_status']"}-->
+                            <!--{case value="1"}--><a class="enter-btn submitOrder" aid="{$vo['id']}">{$vo.enroll}</a><!--{/case}-->
+                            <!--{case value="2"}--><a class="enter-btn" href="{:U('activity/detail',array('id'=>$vo['id']))}">进入直播</a><!--{/case}-->
+                            <!--{case value="3"}--><a class="enter-btn" href="{:U('activity/detail',array('id'=>$vo['id']))}">观看活动</a><!--{/case}-->
+                            <!--{/switch}-->
+                        </div>
+                        <div class="card-text">
+                            <div class="card-time">时间 {$vo.begindate|date='Y/m/d',###} {$vo.begindate|get_weekend} {$vo.x|date='H:i',###}～{$vo.enddate|date='H:i',###}
+                            </div>
+                            <div class="card-address">地点 {$vo.address}</div>
+                        </div>
+                    </div>
+
+                </a></div>
+            </div>
+            <!--{/volist}-->
+            <!--Created by xudao on 16/10/25.-->
+        </div>
+        <div class="text-center">
+            <nav>
+                <ul class="pagination">
+                    {$page}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!--{include file="Common:footer" /}-->
+
+<!--{include file="Common:js" /}-->
+<script>
+    $(".submitOrder").click(function(){
+        var islogin = "{$islogin}";
+        var aid = $(this).attr('aid');
+        if(islogin ==1){
+            var url = "{:U('ajax/addActivityOrders')}";
+            $.getJSON(url,{aid:aid},function(data){
+                if(data.code == 0 || data.code == 200 ){
+                    $(".submitOrder").html('已报名');
+                }
+                layer.msg(data.data);
+            })
+        }else{
+            window.location.href = "{:U('Member/login')}";
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh-hans"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]> <html class="no-js lt-ie9 lt-ie8" lang="zh-hans"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]> <html class="no-js lt-ie9" lang="zh-hans"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="gt-ie9 no-js" lang="zh-hans">
+<!--<![endif]-->
+
+<head>
+  <title>来福-{$data.title}</title>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="__PUBLIC__/css/bootstrap-custom.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/player/StrobeMediaPlayback/lib/player.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/live.min.css">
+  <script src="__PUBLIC__/js/modernizr.js"></script>
+  <script src="__PUBLIC__/js/jquery-v1.11.1.js"></script>
+  <!--[if lt IE 9]>
+  <script src="__PUBLIC__/js/jquery-migrate-1.2.1.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript">
+    // 服务端根据传入的vid动态输出:标题、流、封面
+    var activity = {
+      title: "",
+      stream: "{$data['stream']}",
+      poster: "{$data['poster']}",
+      status:"{$data['status']}"
+    }
+  </script>
+  <script src="__PUBLIC__/player/StrobeMediaPlayback/lib/swfobject.js"></script>
+  <script src="__PUBLIC__/player/StrobeMediaPlayback/lib/ParsedQueryString.js"></script>
+  <script src="__PUBLIC__/player/js/player.js?v3"></script>
+  <style media="screen">
+    html,body,#timer-wrap{
+      height: 100%;
+    }
+    #timer-wrap{
+      position: relative;
+    }
+    img{
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <if condition="$data['status'] == 0">
+  <div id="timer-wrap" class="hidden p-s">
+    <div class="align-vertical  text-center ">
+      <div class="vertical-inner">
+        <!-- <h4 class="text-white">直播还未开始</h4> -->
+        <div class="timer timer-lg m-v-s " data-toggle="timer" data-now="{$data.nowdate}" data-end="{$data.enddate}">
+          <span>距直播开始</span>
+          <em class="day">0</em>
+          <span>天</span>
+          <em>
+            <span class="hour">00</span>:
+            <span class="minute">00</span>:
+            <span class="second">00</span>
+          </em>
+        </div>
+        <img src="{$data.poster}" alt="{$data.title}">
+        <h4 class="text-white">{$data.title}</h4>
+        <div>
+          分享到：
+          <div class="bdsharebuttonbox horizontal">
+
+            <a class="bds_qzone" data-cmd="qzone" href="#" title="分享到QQ空间"></a>
+            <a class="bds_tsina" data-cmd="tsina" href="#" title="分享到新浪微博"></a>
+            <a class="bds_tqq" data-cmd="tqq" href="#" title="分享到腾讯微博"></a>
+            <a class="bds_renren" data-cmd="renren" href="#" title="分享到人人网"></a>
+            <a class="bds_weixin" data-cmd="weixin" href="#" title="分享到微信"></a>
+            <!-- <a class="bds_more" data-cmd="more" href="#"></a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </if>
+  <div id="StrobeMediaPlayback">
+
+  </div>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9711afa0c2cf3c05d1d10a21871cc17d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+
+</html>
